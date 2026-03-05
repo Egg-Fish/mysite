@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eugenio Manansala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+      tailwind.config = {
+          darkMode: 'class',
+      }
+    </script>
+  </head>
+  
+  <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-colors duration-300">
+    <div class="grid grid-cols-12 w-full px-8 py-4 dark:bg-slate-800 text-center">
+      <div class="col-span-1"></div>
+      
+      <h1 class="text-2xl font-bold col-span-10">My Website</h1>
+
+      <button 
+        onclick="toggleDarkMode()"
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all">
+        Toggle Theme
+      </button>
+    </div>
+    
+      
+    <div id="content" class="flex flex-col items-center justify-center w-screen py-24">
+        
+      <div id="about" class="flex w-1/2 gap-6">
+        <img class="rounded-full w-40" src="./egg.jpg">
+        <div class="flex flex-col gap-2">
+          <h1 class="text-2xl font-bold">Eugenio Manansala</h1>
+          <p>
+            Hello! I am Eugenio
+          </p>
+        </div>
+      </div>
+
+      <div id="projects" class="flex flex-col w-1/2 gap-6">
+        <h1 class="text-2xl text-center font-bold">Projects</h1>
+        <div class="flex flex-col bg-gray-100 dark:bg-slate-800 p-6 rounded-xl">
+          <h2 class="text-xl font-bold">Bidirectional Type Inference</h2>
+          <p>Language: Haskell</p>
+          <br/>
+          <p>
+            This project implements the bidirectional type inference rules in the paper "Bidirectional Typing" <a class="text-gray-500" href="https://dl.acm.org/doi/10.1145/3450952" target="_blank">(ACM DL)</a> by Jana Dunfield and Neel Krishnaswami.
+          </p>
+          <br/>
+          <p>
+            This implementation does type inference for the simply typed lambda calculus, with type annotations and unannotated binders.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleDarkMode() {
+          document.documentElement.classList.toggle('dark');
+          
+          if (document.documentElement.classList.contains('dark')) {
+              localStorage.setItem('theme', 'dark');
+          } else {
+              localStorage.setItem('theme', 'light');
+          }
+      }
+
+      if (localStorage.getItem('theme') === 'dark' || 
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+      } else {
+          document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </body>
+</html>
